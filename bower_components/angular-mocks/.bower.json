@@ -1,0 +1,17 @@
+{
+  "name": "angular-mocks",
+  "main": "./angular-mocks.js",
+  "dependencies": {
+    "angular": "1.3.0-build.3120+sha.fe69752"
+  },
+  "homepage": "https://github.com/angular/bower-angular-mocks",
+  "_release": "26937cbe59",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "26937cbe59abb531ecedc2521073135abc6fe90a"
+  },
+  "_source": "git://github.com/angular/bower-angular-mocks.git",
+  "_target": "master",
+  "_originalSource": "angular-mocks"
+}

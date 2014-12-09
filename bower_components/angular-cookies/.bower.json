@@ -1,0 +1,17 @@
+{
+  "name": "angular-cookies",
+  "main": "./angular-cookies.js",
+  "dependencies": {
+    "angular": "1.3.0-build.3120+sha.fe69752"
+  },
+  "homepage": "https://github.com/angular/bower-angular-cookies",
+  "_release": "d61a936343",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "d61a93634327007fa6b189ab4495b80c0efce8f3"
+  },
+  "_source": "git://github.com/angular/bower-angular-cookies.git",
+  "_target": "master",
+  "_originalSource": "angular-cookies"
+}

@@ -1,0 +1,57 @@
+<div class="wrapper">
+    <div class="calendar-btn">
+        <a href="#!/class/calendar"><button type="button" class="btn btn-info"><i class="glyphicon glyphicon-calendar"></i>Class Calendar</button></a>
+    </div>
+    <div class="filter-box">
+        <select class="form-control" ng-model="filterselect" ng-options="filter.name for filter in filterlist">
+            <option value="">-- Choose a filter --</option>
+        </select>
+        <select class="form-control" ng-model="namefilter" ng-options="class.title for class in classes" ng-show="filterselect.name === 'Class Name'">
+            <option value="">-- Choose a class name --</option>
+        </select>
+        <select class="form-control" ng-model="instructorfilter" ng-options="instructor.name for instructor in instructorList" ng-show="filterselect.name === 'Instructor'">
+            <option value="">-- Choose an instructor --</option>
+        </select>
+        <select class="form-control" ng-model="locationfilter" ng-options="l as l for l in locations" ng-show="filterselect.name === 'Location'">
+            <option value="">-- Choose a location --</option>
+        </select>
+        <button type="button" class="btn btn-info" ng-click="applyFilter(filterselect, namefilter, instructorfilter, locationfilter)" ng-show="filterselect !== undefined"><i class="glyphicon glyphicon-ok"></i>Apply Filter</button>
+    </div>
+    <div class="columns">
+        <div data-ng-repeat="class in classes" class="tile">
+            <a data-ng-href="#!/class/view/{{class._id}}">
+                <img src="/upload/{{class.thumbnail.fileid}}" />
+            </a>
+            <div class="classtitle">
+                <a data-ng-href="#!/class/view/{{class._id}}">{{class.title}}</a>
+            </div>
+            <div class="classdetail">
+                <ul class="unstyled">
+                    <li>
+                        <span>From: {{class.startdate | date:'shortDate'}}</span>
+                        <span>To: {{class.enddate | date:'shortDate'}}</span>
+                    </li>
+                    <li>
+                        Insturctor: <a data-ng-href="#!/class/instructor/{{class.instructor._id}}">{{class.instructor.name}}</a>
+                    </li>
+                    <li>
+                        Location: <a data-ng-href="#!/class/location/{{class.location}}">{{class.location}}</a>
+                    </li>
+                    <li>
+                        Capacity: {{class.students.length}}/{{class.capacity}}
+                    </li>
+                </ul>
+            </div>
+            <div class="classedit" data-ng-show="isInstructorClass(class)">
+                <div class="editbtns">
+                    <a class="btn" href="/#!/class/edit/{{class._id}}" data-ng-if="isInstructorClass(class)">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    <a class="btn" data-ng-click="removeClass(class);" data-ng-if="isAdmin(class)">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

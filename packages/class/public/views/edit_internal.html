@@ -1,0 +1,170 @@
+<div class="form-group">
+    <label mean-token="'class-name'" class="col-md-3 control-label">Class Name</label>
+    <div class="col-md-9">
+        <input name="title" type="text" class="form-control" data-ng-model="thisclass.title" id="title" placeholder="Title" ng-required="'true'">
+        <div ng-show="classForm.title.$invalid" class="help-block">
+            <p ng-show="classForm.title.$error.required">Title is required</p>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label mean-token="'class-capacity'" class="col-md-3 control-label">Capacity</label>
+    <div class="col-md-9">
+        <input name="capacity" type="number" class="form-control" data-ng-model="thisclass.capacity" id="capacity" placeholder="Capacity" ng-required="'true'" min="0">
+        <div ng-show="classForm.capacity.$invalid" class="help-block">
+            <p ng-show="classForm.capacity.$error.required">Please enter the correct capacity</p>
+            <p ng-show="classForm.capacity.$error.min">Capacity must be greater than 0</p>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label mean-token="'class-capacity'" class="col-md-3 control-label">Location</label>
+    <div class="col-md-9">
+        <input name="location" type="text" class="form-control" data-ng-model="thisclass.location" id="location" placeholder="Location" ng-required="'true'">
+        <div ng-show="classForm.location.$invalid" class="help-block">
+            <p ng-show="classForm.location.$error.required">Location is required</p>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label mean-token="'class-description'" for="description" class="col-md-3 control-label">Description</label>
+    <div class="col-md-9">
+        <textarea name="description" data-ng-model="thisclass.description" id="description" cols="30" rows="10" placeholder="Description" class="form-control" ng-required="'true'"></textarea>
+        <div ng-show="classForm.description.$invalid" class="help-block">
+            <p ng-show="classForm.description.$error.required">Description is required</p>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label mean-token="'class-email-templete'" for="description" class="col-md-3 control-label">Welcome Email Template</label>
+    <div class="col-md-9">
+        <textarea name="emailtemplate" data-ng-model="thisclass.emailtemplate" id="description" cols="30" rows="10" placeholder="Description" class="form-control" ng-required="'true'"></textarea>
+        <div ng-show="classForm.emailtemplate.$invalid" class="help-block">
+            <p ng-show="classForm.emailtemplate.$error.required">Email template is required</p>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label mean-token="'class-weekdays'" class="col-md-3 control-label">Weekdays</label>
+    <div class="col-md-9">
+        <label ng-repeat="day in weekdays">
+            <input type="checkbox" value={{day}} ng-checked="thisclass.weekdays.indexOf(weekdays.indexOf(day)) > -1" ng-click="toggleSelection(weekdays.indexOf(day))">{{day}}
+        </label>
+        <div ng-show="thisclass.weekdays.length==0" class="help-block">
+            <p>You must select at least one weekday</p>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label mean-token="'class-time'" class="col-md-3 control-label">Class time</label>
+    <div class="col-md-9">
+        <input name="weektime" ng-model="thisclass.weektime" show-meridian="false" ng-required="false" timepicker></input>
+    </div>
+</div>
+
+<div class="form-group">
+    <label mean-token="'start-date'" class="col-md-3 control-label">Start Date</label>
+    <div class="col-md-9">
+        <p class="input-group">
+        <input name="startdate" type="text" class="form-control"  datepicker-popup="{{format}}" data-ng-model="thisclass.startdate" is-open="thisclass.startopened"  max-date="'12/31/2099'" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-required="'true'" ng-change="validateDate(thisclass.startdate)"/>
+          <span class="input-group-btn">
+<button type="button" class="btn btn-default" ng-click="startopen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+        <div ng-show="classForm.startdate.$invalid || !dateValid" class="help-block">
+            <p ng-show="classForm.startdate.$error.required">Start date is required</p>
+            <p ng-show="thisclass.startdate > thisclass.enddate">Start date must be prior to end date</p>
+            <p ng-show="!startdateValid">Start date must be on selected weekdays</p>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label mean-token="'end-date'" class="col-md-3 control-label">End Date</label>
+    <div class="col-md-9">
+        <p class="input-group">
+        <input name="enddate" type="text" class="form-control"  datepicker-popup="{{format}}" data-ng-model="thisclass.enddate" is-open="thisclass.endopened"  max-date="'12/31/2099'" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-required="'true'" ng-change="validateDate(thisclass.startdate)"/>
+          <span class="input-group-btn">
+<button type="button" class="btn btn-default" ng-click="endopen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+        <div ng-show="classForm.enddate.$invalid || !dateValid" class="help-block">
+            <p ng-show="classForm.enddate.$error.required">End date is required</p>
+            <p ng-show="thisclass.startdate > thisclass.enddate">End date must be after start date</p>
+            <p ng-show="!enddateValid">End date must be on selected weekdays</p>
+        </div>
+    </div>
+</div>
+
+<div class="form-group" data-ng-if="thisclass.weekdays.length > 0 && thisclass.startdate != undefined && thisclass.enddate != undefined">
+    <label mean-token="'exception-dates'" class="col-md-3 control-label">Exclusion Dates</label>
+    <div class="col-md-9">
+        <div class="date-cell" ng-repeat="date in thisclass.alldates">
+            <input type="checkbox" ng-checked="thisclass.exclusiondates.indexOf(date) > -1" ng-click="toggleExclusion(date)">
+            {{date | date:'shortDate'}}
+        </div>
+    </div>
+</div>
+
+<div class="form-group" data-ng-if="isAdmin(thisclass)">
+    <label mean-token="'Instructor'" class="col-md-3 control-label">Instructor</label>
+    <div class="col-md-9">
+        <select class="form-control" name="instructor" ng-model="thisclass.instructor" ng-options="instructor.name for instructor in instructorList" ng-required="'false'">
+            <option value="">-- Choose an instructor  --</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <label mean-token="'syllabus'" class="col-md-3 control-label">Thunmbnail</label>
+    <label mean-token="'uploading'" class="col-md-3 control-label" ng-hide="tnuploadComplete">Uploading...</label>
+    <div class="col-md-9" ng-show="tnuploadComplete">
+        <ul class="unstyled">
+            <li ng-repeat="file in tnuploader.queue">{{file.file.name}}</li>
+        </ul>
+        <input nv-file-select type="file" name="tnuploads" uploader="tnuploader" accept="image/*"/>
+        <a ng-click="tnupload()">Upload</a>
+        <img class="thumbnail" data-ng-show="hasTn" src="/upload/{{thisclass.thumbnail.fileid}}" />
+        <div ng-show="!hasTn" class="help-block">
+            <p ng-show="!hasTn">You have to specify a thumbnail</p>
+        </div>
+    </div>
+</div>
+
+<div class="form-group" ng-hide="createClass">
+    <label mean-token="'syllabus'" class="col-md-3 control-label">Syllabuses</label>
+    <div class="col-md-9">
+        <ul class="unstyled">
+            <li data-ng-repeat="syllabus in thisclass.syllabus">
+                <a href="/upload/{{syllabus.fileid}}">{{syllabus.filename}}</a>
+                <a class="btn" ng-click="removeFile(syllabus.fileid)">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="form-group" ng-hide="createClass">
+    <label mean-token="'upload new syllabuses'" class="col-md-3 control-label">Upload new syllabuses</label>
+    <label mean-token="'uploading'" class="col-md-3 control-label" ng-hide="uploadComplete">Uploading...</label>
+    <div class="col-md-9" ng-show="uploadComplete">
+        <ul class="unstyled">
+            <li ng-repeat="file in uploader.queue">{{file.file.name}}</li>
+        </ul>
+        <input nv-file-select type="file" name="uploads" uploader="uploader" />
+        <a ng-click="upload()">Upload</a>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-offset-3 col-md-9">
+        <button type="submit" class="btn btn-info" ng-disabled="classForm.$invalid || !dateValid || !hasTn">Submit</button>
+    </div>
+</div>

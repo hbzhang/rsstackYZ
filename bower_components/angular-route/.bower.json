@@ -1,0 +1,17 @@
+{
+  "name": "angular-route",
+  "main": "./angular-route.js",
+  "dependencies": {
+    "angular": "1.3.0-build.3120+sha.fe69752"
+  },
+  "homepage": "https://github.com/angular/bower-angular-route",
+  "_release": "ab121ade78",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ab121ade78ca4df0731611065940348daf9d4c23"
+  },
+  "_source": "git://github.com/angular/bower-angular-route.git",
+  "_target": "master",
+  "_originalSource": "angular-route"
+}

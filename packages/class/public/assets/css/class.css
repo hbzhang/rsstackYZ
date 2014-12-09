@@ -1,0 +1,212 @@
+.unstyled {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.tile {
+    width: 340px;
+    background: #FEFEFE;
+    border: 1px solid #CCC;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+}
+
+.tile:hover {
+    background: #EEE;
+}
+
+.tile img {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    border-radius: 7px 7px 0 0;
+}
+
+.tile .classtitle {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding: 15px;
+    font-size: 24px;
+    text-align:center;
+}
+
+.tile .classdetail {
+    width: 100%;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.tile .classedit {
+    height: 40px;
+}
+
+.classedit .editbtns {
+    float: right;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1100px;
+    min-width: 800px;
+    margin: 50px auto;
+}
+
+.columns {
+    -webkit-column-count: 3;
+    -webkit-column-gap: 20px;
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    column-count: 3;
+    column-gap: 25px;
+    width: 100%;
+}
+
+.thumbnail {
+    width: 300px;
+}
+
+.class-content-box {
+    width: 100%;
+    background: #FEFEFE;
+    border: 1px solid #CCC;
+    border-radius: 7px;
+    margin: 0 10px 10px 10px;
+}
+
+.class-content-box img {
+    width: 100%;
+    border-radius: 7px 7px 0 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.class-content-box .class-title {
+    width: 100%;
+    font-size: 40px;
+    text-align: left;
+    padding: 5px 10px 0 10px;
+}
+
+.class-content-box .class-instructor {
+    width: 100%;
+    font-size: 20px;
+    text-align: right;
+    padding: 0 10px 10px 0;
+}
+
+.class-content-box .class-description {
+    font-size: 16px;
+    border-top: 1px solid #ccc;
+    padding: 5px 10px 10px 10px;
+}
+
+.class-content-box .class-meta {
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    padding: 5px 10px 10px 10px;
+}
+
+.class-content-box .class-box-title {
+    width: 100%;
+    background: #EEEEEE;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 10px 10px 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.class-content-box .class-comments {
+    width: 100%;
+    padding: 5px 10px 10px 10px;
+}
+
+.class-feedback-form {
+    width: 100%;
+    padding: 5px 10px 10px 10px;
+    border-top: 1px solid #ccc;
+}
+
+.class-comments form {
+    width: 100%;
+    padding: 5px 10px 10px 10px;
+}
+
+.class-feedback-form button {
+    margin-top: 10px;
+}
+
+.join-btn button {
+    width: 100%;
+}
+
+.studentlist {
+    padding-top: 10px;
+}
+
+.studentlist li {
+    width: 100%;
+    height: 20px;
+}
+
+.studentlist .class-studentlist-name {
+    width: 60%;
+    float: left;
+}
+
+.studentlist .class-studentlist-comment {
+    width: 10%;
+    float: right;
+    margin-right: 20px;
+}
+
+.syllabuslist ul {
+    padding-left: 0;
+    width: 100%;
+}
+
+.syllabuslist li {
+    width: 100%;
+    height: 40px;
+    margin-left: 0;
+    padding-top: 15px;
+    padding-left: 20px;
+}
+
+.syllabuslist li:hover {
+    background: #EEEEEE;
+}
+
+.class-box-left {
+    width: 70%;
+    float: left;
+}
+
+.class-box-right {
+    width: 27%;
+    float: right;
+}
+
+.date-cell {
+    width: 80px;
+    float: left;
+}
+
+.create-announcement-btn {
+    width: 100%;
+    margin: 20px 0 20px 10px;
+}
+
+.filter-box {
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    float: left;
+}
+
+.filter-box select {
+    width: 40%;
+    margin-right: 30px;
+    float: left;
+}

@@ -1,0 +1,5 @@
+<section data-ng-controller="ClassController" data-ng-init="findOne();createClass=false;">
+    <form name="classForm" class="form-horizontal col-md-8" role="form" data-ng-submit="classUpdate(classForm.$valid)" novalidate>
+        <div ng-include="'/class/views/edit_internal.html'"></div>
+    </form>
+</section>

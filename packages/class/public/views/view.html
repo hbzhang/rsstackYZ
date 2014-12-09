@@ -1,0 +1,138 @@
+<section data-ng-controller="ClassController" data-ng-init="findOne()">
+<div class="wrapper">
+    <div class="class-box-left">
+        <div class="class-content-box">
+            <img src="/upload/{{thisclass.thumbnail.fileid}}" />
+            <div class="class-title">
+                {{thisclass.title}}
+            </div>
+            <div class="class-instructor">
+                Insturctor: <a data-ng-href="#!/class/instructor/{{thisclass.instructor._id}}">{{thisclass.instructor.name}}</a>
+                Location: <a data-ng-href="#!/class/location/{{thisclass.location}}">{{thisclass.location}}</a>
+            </div>
+            <div class="class-description">
+                {{thisclass.description}}
+            </div>
+        </div>
+        <div class="class-content-box">
+            <div class="class-box-title">
+                Comments from the instructor
+            </div>
+            <div class="class-comments">
+                <ul class="unstyled">
+                    <li data-ng-repeat="c in thisclass.comments">
+                        <h6>{{c.date | date:'shortDate'}}</h6>
+                        To {{c.student.name}}: {{c.content}}
+                        <a data-ng-show="isInstructorClass(thisclass)" class="btn" ng-click="removeComment(c)">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="class-content-box">
+            <div class="class-box-title">
+                Feedbacks from students
+            </div>
+            <div class="class-comments">
+                <ul class="unstyled">
+                    <li data-ng-repeat="feedback in thisclass.feedbacks">
+                        {{feedback.owner.name}}: {{feedback.content}}
+                        <a class="btn" data-ng-if="isAdmin(thisclass)" ng-click="removeFeedback(feedback)">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="class-feedback-form">
+                <form name="classForm" role="form" data-ng-submit="feedbackSubmit()" novalidate>
+                    <div ng-class="{ 'has-error' : submitted && classForm.description.$invalid }">
+                        <label mean-token="'class-feedback'" for="feedback" class="col-md-3 control-label">Leave a feedback</label>
+                        <div>
+                            <textarea name="feedback" data-ng-model="feedback" id="feedback" cols="30" rows="10" placeholder="Feedback" class="form-control" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-info">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="class-box-right">
+        <div class="class-content-box join-btn" ng-show="global.user.roles.indexOf('student') != -1">
+            <button class="btn btn-primary" data-ng-hide="thisclass.inclass" ng-click="joinClass(thisclass._id)">Join the class</button>
+            <button class="btn btn-primary disabled" data-ng-show="thisclass.inclass">You're in this class</button>
+        </div>
+        <div class="class-content-box">
+            <div class="class-box-title">
+                Current students
+            </div>
+            <div class="studentlist">
+                <ul class="unstyled">
+                    <li data-ng-repeat="student in thisclass.students">
+                        <div class="class-studentlist-name">{{student.name}}</div>
+                        <div class="class-studentlist-comment"><button class="glyphicon glyphicon-envelope" data-ng-show="isInstructorClass(thisclass)" data-ng-click="leaveComment(student)"></button></div>
+                        <div class="class-studentlist-comment"><button class="glyphicon glyphicon-remove" data-ng-show="isInstructorClass(thisclass)" data-ng-click="dropStudent(student)"></button></div>
+                    </li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="class-content-box">
+            <div class="class-box-title">
+                Schedule
+            </div>
+            <div class="class-meta">
+                <span>Start from: {{thisclass.startdate | date:'shortDate'}}</span>
+            </div>
+            <div class="class-meta">
+                <span>To: {{thisclass.enddate | date:'shortDate'}}</span>
+            </div>
+            <div class="class-meta">
+                Every:
+                <span data-ng-repeat="day in thisclass.weekdays">{{weekdays[day]}} </span>
+            </div>
+            <div class="class-meta">
+                <span>{{thisclass.weektime | date:'shortTime'}}</span>
+            </div>
+        </div>
+        <div class="class-content-box">
+            <div class="class-box-title">
+                Capacity
+            </div>
+            <div class="class-meta">
+                <span>{{thisclass.students.length}}/{{thisclass.capacity}}</span>
+            </div>
+        </div>
+        <div class="class-content-box" data-ng-show="commentbox">
+            <div class="class-box-title">
+                Leave comment to {{commentStudent.name}}
+            </div>
+            <div id="commentbox">
+                <div data-ng-show="commentbox" name="commentForm" role="form" novalidate>
+                    <div ng-class="{ 'has-error' : submitted && classForm.description.$invalid }">
+                        <div>
+                            <textarea focus-on="comment" name="comment" data-ng-model="comment" id="comment" cols="30" rows="10" placeholder="Comment" class="form-control" required></textarea>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-info" ng-click="commentSubmit();">Submit</button>
+                        <button ng-click="commentbox=!commentbox;comment=''" class="btn btn-info">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="class-content-box">
+            <div class="class-box-title">
+                Syllabus
+            </div>
+            <div class="syllabuslist">
+                <ul class="unstyled">
+                    <li data-ng-repeat="syllabus in thisclass.syllabus">
+                        <a href="/upload/{{syllabus.fileid}}">{{syllabus.filename}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</section>

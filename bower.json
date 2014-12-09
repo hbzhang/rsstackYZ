@@ -1,0 +1,23 @@
+{
+    "name": "mean",
+    "version": "0.3.3",
+    "version": "0.4.0",
+    "dependencies": {
+        "jquery": "1.x",
+        "jquery-ui": "#master",
+        "angular": "v1.3.0-rc.0",
+        "angular-resource": "#master",
+        "angular-cookies": "#master",
+        "angular-mocks": "#master",
+        "angular-route": "#master",
+        "angular-ui-calendar": "#master",
+        "bootstrap": "3.1.1",
+        "angular-bootstrap": "0.11.0",
+        "angular-ui-router": "#master",
+        "angular-file-upload": "#master",
+        "angular-underscore": "#master",
+        "underscore": "#master",
+        "angucomplete": "#master",
+        "ng-focus-on": "#master"
+    }
+}

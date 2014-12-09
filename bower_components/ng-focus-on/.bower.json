@@ -1,0 +1,34 @@
+{
+  "name": "ng-focus-on",
+  "main": "ng-focus-on.js",
+  "homepage": "https://github.com/goodeggs/ng-focus-on",
+  "authors": [
+    "Max Edmands <github@maxedmands.com>",
+    "Jonathan El-Bizri <github@elbizri.com>"
+  ],
+  "description": "A directive to make angular elements focusable",
+  "keywords": [
+    "angularjs",
+    "focus",
+    "blur",
+    "directive"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "d8da986617",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "d8da9866171ad96b5334bf82ae4157261fb52b02"
+  },
+  "_source": "git://github.com/goodeggs/ng-focus-on.git",
+  "_target": "master",
+  "_originalSource": "ng-focus-on"
+}

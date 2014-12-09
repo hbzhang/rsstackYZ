@@ -1,0 +1,18 @@
+<section data-ng-controller="AnnouncementController" data-ng-init="announcementList()">
+<div class="wrapper">
+    <div class="create-announcement-btn" ng-show="global.user.roles.indexOf('instructor') != -1 || global.user.roles.indexOf('admin') != -1">
+        <a data-ng-href="#!/announcement/create"><button class="btn btn-info">Create an announcement</button></a>
+    </div>
+    <div class="class-content-box" data-ng-repeat="a in announcementlist">
+        <div class="class-box-title">
+            [{{a.class_.title}}] - {{a.title}}
+        </div>
+        <div class="class-description">
+            By: {{a.owner.name}} - {{a.date | date:'shortDate'}}
+        </div>
+        <div class="class-description">
+            {{a.content}}
+        </div>
+    </div>
+</div>
+</section>

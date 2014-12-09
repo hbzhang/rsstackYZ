@@ -1,0 +1,17 @@
+{
+  "name": "angular-resource",
+  "main": "./angular-resource.js",
+  "dependencies": {
+    "angular": "1.3.0-build.3120+sha.fe69752"
+  },
+  "homepage": "https://github.com/angular/bower-angular-resource",
+  "_release": "2422170a77",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "2422170a7703197d8836d79242cb280e0870eb0b"
+  },
+  "_source": "git://github.com/angular/bower-angular-resource.git",
+  "_target": "master",
+  "_originalSource": "angular-resource"
+}

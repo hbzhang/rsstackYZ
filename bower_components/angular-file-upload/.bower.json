@@ -1,0 +1,27 @@
+{
+  "name": "angular-file-upload",
+  "main": "angular-file-upload.js",
+  "homepage": "https://github.com/nervgh/angular-file-upload",
+  "ignore": [
+    "examples"
+  ],
+  "dependencies": {
+    "angular": "~1.2.11",
+    "es5-shim": ">=3.4.0"
+  },
+  "keywords": [
+    "angular",
+    "file",
+    "upload",
+    "module"
+  ],
+  "_release": "ea3acc0bd1",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ea3acc0bd1b48f72db05a04feae798197877c635"
+  },
+  "_source": "git://github.com/nervgh/angular-file-upload.git",
+  "_target": "master",
+  "_originalSource": "angular-file-upload"
+}

@@ -1,0 +1,15 @@
+{
+    "name": "class",
+    "version": "0.0.1",
+    "description": "A package for adding and registering classes.",
+    "author": {
+        "name": "Yuzhong Wen"
+    },
+    "mean": "0.3.3",
+    "engines": {
+        "node": "0.10.x",
+        "npm": "1.4.x"
+    },
+    "dependencies": {},
+    "license": "MIT"
+}
